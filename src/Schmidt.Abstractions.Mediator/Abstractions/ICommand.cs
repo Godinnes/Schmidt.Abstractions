@@ -7,6 +7,5 @@ namespace Schmidt.Abstractions.Mediator.Abstractions
     }
     public interface ICommand<out TResult> : IRequest<TResult>
     {
-
     }
 }

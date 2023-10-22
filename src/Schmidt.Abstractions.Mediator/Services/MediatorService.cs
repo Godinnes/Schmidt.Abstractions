@@ -4,7 +4,7 @@ using System.Threading.Tasks;
 
 namespace Schmidt.Abstractions.Mediator.Services
 {
-    public class MediatorService : IMediatorService
+    internal class MediatorService : IMediatorService
     {
         private readonly IMediator _mediatorR;
         public MediatorService(IMediator mediatorR)
