@@ -7,6 +7,27 @@ namespace Schmidt.Abstractions.FunctionMediator.Abstractions
     {
         public HttpStatusCode Status { get; }
         public object ObjectResult { get; }
-        public IActionResult ActionResult { get; }
+        public string Message { get; }
+        public IActionResult ActionResult
+        {
+            get
+            {
+                if (Status > HttpStatusCode.BadRequest)
+                {
+                    var badRequest = new ObjectResult(Message);
+                    badRequest.StatusCode = (int)Status;
+                    return badRequest;
+                }
+
+                if (ObjectResult == null)
+                {
+                    return new StatusCodeResult((int)HttpStatusCode.NoContent);
+                }
+
+                var result = new ObjectResult(ObjectResult);
+                result.StatusCode = (int)Status;
+                return result;
+            }
+        }
     }
 }

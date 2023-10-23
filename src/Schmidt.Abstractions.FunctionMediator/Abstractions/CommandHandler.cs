@@ -2,7 +2,7 @@
 using System.Threading.Tasks;
 using System.Threading;
 using Schmidt.Abstractions.FunctionMediator.Implementations;
-using System;
+using Schmidt.Abstractions.Exception;
 
 namespace Schmidt.Abstractions.FunctionMediator.Abstractions
 {
@@ -20,10 +20,17 @@ namespace Schmidt.Abstractions.FunctionMediator.Abstractions
                 response.Status = System.Net.HttpStatusCode.OK;
                 return response;
             }
-            catch (Exception ex)
+            catch(CustomException customExeption)
             {
                 var response = new Response();
-                response.Status = System.Net.HttpStatusCode.BadRequest;
+                response.Status = customExeption.HttpStatusCode;
+                response.Message = customExeption.Message;
+                return response;
+            }
+            catch (System.Exception ex)
+            {
+                var response = new Response();
+                response.Status = System.Net.HttpStatusCode.InternalServerError;
                 response.Message = ex.Message;
                 return response;
             }
@@ -45,10 +52,17 @@ namespace Schmidt.Abstractions.FunctionMediator.Abstractions
                 response.Status = System.Net.HttpStatusCode.OK;
                 return response;
             }
-            catch (Exception ex)
+            catch (CustomException customExeption)
             {
                 var response = new Response();
-                response.Status = System.Net.HttpStatusCode.BadRequest;
+                response.Status = customExeption.HttpStatusCode;
+                response.Message = customExeption.Message;
+                return response;
+            }
+            catch (System.Exception ex)
+            {
+                var response = new Response();
+                response.Status = System.Net.HttpStatusCode.InternalServerError;
                 response.Message = ex.Message;
                 return response;
             }
