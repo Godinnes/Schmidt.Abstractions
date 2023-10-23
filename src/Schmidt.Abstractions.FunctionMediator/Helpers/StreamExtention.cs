@@ -16,7 +16,7 @@ namespace Schmidt.Abstractions.FunctionMediator.Helpers
                 {
                     contentStream.CopyTo(streamWrite);
                     if (streamWrite.Length <= 0)
-                        throw new Exception($"Request body is 0 bytes. Expected {typeof(T).FullName}");
+                        throw new System.Exception($"Request body is 0 bytes. Expected {typeof(T).FullName}");
 
                     streamWrite.Seek(0, System.IO.SeekOrigin.Begin);
 
@@ -42,7 +42,7 @@ namespace Schmidt.Abstractions.FunctionMediator.Helpers
                     }
                     else
                     {
-                        throw new Exception($"Unsupported content type {contentType}");
+                        throw new System.Exception($"Unsupported content type {contentType}");
                     }
                 }
 
@@ -55,12 +55,12 @@ namespace Schmidt.Abstractions.FunctionMediator.Helpers
 
                 if (!res)
                 {
-                    throw new Exception();
+                    throw new System.Exception();
                 }
 
                 return returnObject;
             }
-            catch (Exception ex)
+            catch (System.Exception ex)
             {
                 if (ex.InnerException != null)
                 {
