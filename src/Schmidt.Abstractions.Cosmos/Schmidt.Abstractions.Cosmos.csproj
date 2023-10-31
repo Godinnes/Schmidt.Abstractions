@@ -3,19 +3,18 @@
 	<PropertyGroup>
 		<OutputType>Library</OutputType>
 		<TargetFramework>net6.0</TargetFramework>
-		<PackageId>Schmidt.Abstractions.CustomException</PackageId>
+		<PackageId>Schmidt.Abstractions.Cosmos</PackageId>
 		<Version>1.0.0</Version>
 		<Authors>Marcelo</Authors>
 		<Company>Schmidt</Company>
-		<PackageDescription>Custom Exception</PackageDescription>
+		<PackageDescription>Cosmos Abstaction</PackageDescription>
 		<RepositoryUrl>https://github.com/Godinnes/Schmidt.Abstractions</RepositoryUrl>
 		<GeneratePackageOnBuild>true</GeneratePackageOnBuild>
 	</PropertyGroup>
 
 	<ItemGroup>
-		<PackageReference Include="Microsoft.AspNetCore.Http.Abstractions" Version="2.2.0" />
-		<PackageReference Include="Microsoft.Azure.Functions.Worker" Version="1.19.0" />
-		<PackageReference Include="Newtonsoft.Json" Version="13.0.3" />
+	  <PackageReference Include="Microsoft.EntityFrameworkCore.Cosmos" Version="7.0.13" />
+	  <PackageReference Include="Microsoft.Extensions.Configuration.Abstractions" Version="7.0.0" />
 	</ItemGroup>
 
 </Project>
